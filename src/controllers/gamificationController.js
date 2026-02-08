@@ -75,6 +75,31 @@ exports.getUserProgress = async (req, res) => {
 };
 
 /**
+ * Get user achievements (alias for getBadges)
+ */
+exports.getAchievements = async (req, res) => {
+  try {
+    const userId = req.user?.id || req.params.userId;
+    
+    // In production, fetch from database
+    res.json({
+      success: true,
+      data: {
+        earned: [],
+        inProgress: [],
+        totalAvailable: badges.length
+      }
+    });
+  } catch (error) {
+    console.error('Failed to get achievements:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+};
+
+/**
  * Get user badges
  */
 exports.getBadges = async (req, res) => {

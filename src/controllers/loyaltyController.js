@@ -8,6 +8,35 @@ const { LoyaltyRepository } = require('../models/Loyalty');
 const loyaltyRepo = new LoyaltyRepository();
 
 /**
+ * Get user points balance
+ */
+exports.getPoints = async (req, res) => {
+  try {
+    const userId = req.user?.id || req.params.userId;
+    let account = await loyaltyRepo.getAccount(userId);
+    
+    if (!account) {
+      account = await loyaltyRepo.createAccount(userId);
+    }
+    
+    res.json({
+      success: true,
+      data: {
+        points: account.points,
+        lifetimePoints: account.lifetimePoints,
+        tier: account.tier
+      }
+    });
+  } catch (error) {
+    console.error('Failed to get points:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+};
+
+/**
  * Get user loyalty account
  */
 exports.getAccount = async (req, res) => {
@@ -55,6 +84,11 @@ exports.getTransactionHistory = async (req, res) => {
     });
   }
 };
+
+/**
+ * Get transaction history (alias for routes)
+ */
+exports.getHistory = exports.getTransactionHistory;
 
 /**
  * Process booking and award points
