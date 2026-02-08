@@ -11,6 +11,11 @@ const authRoutes = require('./src/routes/authRoutes');
 const createItineraryRoutes = require('./src/routes/itineraryRoutes');
 const createPaymentRoutes = require('./src/routes/paymentRoutes');
 
+// MISSING ROUTES - Adding these for full feature support
+const adminRoutes = require('./src/routes/adminRoutes');
+const insuranceRoutes = require('./src/routes/insuranceRoutes');
+const userRoutes = require('./src/routes/userRoutes');
+
 // Import services
 const BookingService = require('./src/services/bookingService');
 const PaymentService = require('./src/services/paymentService');
@@ -287,6 +292,20 @@ app.use('/api/itinerary', createItineraryRoutes());
 // Payment routes  
 app.use('/api/payments', createPaymentRoutes());
 
+// ============================================================================
+// MISSING ROUTES - NOW REGISTERED
+// ============================================================================
+
+// Admin routes - Protected admin endpoints
+app.use('/api/admin', adminRoutes);
+
+// Insurance routes - Travel insurance quotes and purchases
+app.use('/api/insurance', insuranceRoutes);
+
+// User routes - User profile and bookings
+app.use('/api/user', userRoutes);
+
+// ============================================================================
 // User routes (for profile page) - MUST be before 404 handler
 app.get('/api/users/bookings', async (req, res) => {
   console.log('DEBUG: /api/users/bookings route hit');
