@@ -1,0 +1,434 @@
+[
+  {
+    "name": "Paris",
+    "country": "France",
+    "continent": "Europe",
+    "description": "The City of Light, known for its art, fashion, gastronomy, and culture. Home to iconic landmarks like the Eiffel Tower and Louvre Museum.",
+    "overview": "Paris captivates visitors with its timeless elegance, world-class museums, charming cafés, and romantic atmosphere. From the iconic Eiffel Tower to the artistic streets of Montmartre, every corner tells a story.",
+    "highlights": [
+      "Eiffel Tower - Iconic iron lattice tower",
+      "Louvre Museum - World's largest art museum",
+      "Notre-Dame Cathedral - Gothic masterpiece",
+      "Champs-Élysées - Most beautiful avenue",
+      "Montmartre - Artistic hilltop district"
+    ],
+    "bestTimeToVisit": {
+      "description": "April to June and October to early November offer pleasant weather and fewer crowds",
+      "months": [
+        { "month": "January", "rating": 5, "weather": "Cold, occasional snow", "crowdLevel": "low" },
+        { "month": "April", "rating": 8, "weather": "Mild, spring blooms", "crowdLevel": "moderate" },
+        { "month": "July", "rating": 7, "weather": "Warm, sunny", "crowdLevel": "peak" },
+        { "month": "October", "rating": 9, "weather": "Crisp autumn days", "crowdLevel": "moderate" }
+      ]
+    },
+    "localTransport": [
+      "Metro - Extensive subway system",
+      "RER - Regional express trains",
+      "Bus - Comprehensive bus network",
+      "Vélib' - Bike sharing system",
+      "Walking - Best for central Paris"
+    ],
+    "popularAttractions": [
+      { "name": "Eiffel Tower", "category": "landmark", "rating": 5 },
+      { "name": "Louvre Museum", "category": "museum", "rating": 5 },
+      { "name": "Arc de Triomphe", "category": "landmark", "rating": 4.5 },
+      { "name": "Sacré-Cœur", "category": "landmark", "rating": 4.5 }
+    ],
+    "estimatedCosts": {
+      "budget": { "accommodation": 60, "food": 30, "transport": 10, "activities": 20, "dailyTotal": 120 },
+      "mid": { "accommodation": 150, "food": 60, "transport": 15, "activities": 40, "dailyTotal": 265 },
+      "luxury": { "accommodation": 400, "food": 150, "transport": 50, "activities": 100, "dailyTotal": 700 },
+      "currency": "EUR"
+    },
+    "culturalTips": [
+      "Learn basic French phrases - locals appreciate the effort",
+      "Dining is leisurely - don't rush meals",
+      "Dress smartly, especially for nice restaurants",
+      "Shops often close on Sundays"
+    ],
+    "currency": { "code": "EUR", "name": "Euro", "symbol": "€" },
+    "languages": ["French"],
+    "timezone": { "name": "Central European Time", "offset": "UTC+1" },
+    "categories": ["city", "historical", "romantic", "food"],
+    "tags": ["romance", "museums", "food", "shopping", "culture", "art"],
+    "popularityScore": 95
+  },
+  {
+    "name": "Tokyo",
+    "country": "Japan",
+    "continent": "Asia",
+    "description": "A dazzling metropolis where ancient traditions blend seamlessly with cutting-edge technology and pop culture.",
+    "overview": "Tokyo offers an unforgettable sensory experience - from serene temples and traditional gardens to neon-lit streets and world-class cuisine. It's a city that surprises at every turn.",
+    "highlights": [
+      "Senso-ji Temple - Tokyo's oldest temple",
+      "Shibuya Crossing - World's busiest intersection",
+      "Tokyo Skytree - Tallest structure in Japan",
+      "Tsukiji Outer Market - Food lover's paradise",
+      "Meiji Shrine - Peaceful Shinto shrine"
+    ],
+    "bestTimeToVisit": {
+      "description": "March-May for cherry blossoms, October-November for autumn colors",
+      "months": [
+        { "month": "March", "rating": 9, "weather": "Mild, cherry blossoms", "crowdLevel": "high" },
+        { "month": "July", "rating": 6, "weather": "Hot, humid, rainy season", "crowdLevel": "moderate" },
+        { "month": "October", "rating": 9, "weather": "Pleasant, autumn foliage", "crowdLevel": "high" },
+        { "month": "December", "rating": 7, "weather": "Cold, dry", "crowdLevel": "moderate" }
+      ]
+    },
+    "localTransport": [
+      "JR Yamanote Line - Circle around central Tokyo",
+      "Tokyo Metro - Extensive subway network",
+      "Shinkansen - Bullet trains to other cities",
+      "Taxis - Available but expensive",
+      "JR Pass - Great for tourists"
+    ],
+    "popularAttractions": [
+      { "name": "Senso-ji Temple", "category": "landmark", "rating": 5 },
+      { "name": "Tokyo National Museum", "category": "museum", "rating": 4.5 },
+      { "name": "TeamLab Planets", "category": "entertainment", "rating": 5 },
+      { "name": "Akihabara", "category": "shopping", "rating": 4 }
+    ],
+    "estimatedCosts": {
+      "budget": { "accommodation": 50, "food": 25, "transport": 10, "activities": 20, "dailyTotal": 105 },
+      "mid": { "accommodation": 120, "food": 50, "transport": 15, "activities": 40, "dailyTotal": 225 },
+      "luxury": { "accommodation": 350, "food": 120, "transport": 50, "activities": 80, "dailyTotal": 600 },
+      "currency": "JPY"
+    },
+    "culturalTips": [
+      "Remove shoes when entering homes and certain restaurants",
+      "Don't eat while walking on the street",
+      "Bow when greeting or thanking",
+      "Tipping is not customary and can be seen as rude"
+    ],
+    "currency": { "code": "JPY", "name": "Japanese Yen", "symbol": "¥" },
+    "languages": ["Japanese"],
+    "timezone": { "name": "Japan Standard Time", "offset": "UTC+9" },
+    "categories": ["city", "food", "family", "business"],
+    "tags": ["technology", "food", "anime", "temples", "shopping", "tradition"],
+    "popularityScore": 92
+  },
+  {
+    "name": "New York City",
+    "country": "United States",
+    "continent": "North America",
+    "description": "The city that never sleeps, featuring iconic skyline, world-class entertainment, diverse neighborhoods, and endless attractions.",
+    "overview": "NYC is an exhilarating mix of culture, commerce, and creativity. From Broadway shows to world-class dining, Central Park to Times Square, it's a city of infinite possibilities.",
+    "highlights": [
+      "Statue of Liberty - Symbol of freedom",
+      "Central Park - Urban oasis",
+      "Times Square - The Crossroads of the World",
+      "Empire State Building - Art Deco icon",
+      "Brooklyn Bridge - Historic suspension bridge"
+    ],
+    "bestTimeToVisit": {
+      "description": "April-June and September-November offer the best weather",
+      "months": [
+        { "month": "April", "rating": 8, "weather": "Mild, spring weather", "crowdLevel": "moderate" },
+        { "month": "July", "rating": 6, "weather": "Hot, humid", "crowdLevel": "high" },
+        { "month": "September", "rating": 9, "weather": "Pleasant, crisp", "crowdLevel": "moderate" },
+        { "month": "December", "rating": 8, "weather": "Cold, holiday spirit", "crowdLevel": "high" }
+      ]
+    },
+    "localTransport": [
+      "Subway - 24/7 service throughout city",
+      "Taxi/Uber - Available everywhere",
+      "Bus - Extensive network",
+      "Citi Bike - Bike sharing",
+      "Walking - Great for Manhattan"
+    ],
+    "popularAttractions": [
+      { "name": "Central Park", "category": "nature", "rating": 5 },
+      { "name": "Metropolitan Museum of Art", "category": "museum", "rating": 5 },
+      { "name": "Statue of Liberty", "category": "landmark", "rating": 4.5 },
+      { "name": "Broadway", "category": "entertainment", "rating": 5 }
+    ],
+    "estimatedCosts": {
+      "budget": { "accommodation": 100, "food": 40, "transport": 15, "activities": 30, "dailyTotal": 185 },
+      "mid": { "accommodation": 250, "food": 80, "transport": 25, "activities": 60, "dailyTotal": 415 },
+      "luxury": { "accommodation": 600, "food": 200, "transport": 80, "activities": 150, "dailyTotal": 1030 },
+      "currency": "USD"
+    },
+    "culturalTips": [
+      "Walk fast on the left, stand on the right on escalators",
+      "Tipping 15-20% is expected at restaurants",
+      "Jaywalking is common but technically illegal",
+      "Each borough has its own unique character"
+    ],
+    "currency": { "code": "USD", "name": "US Dollar", "symbol": "$" },
+    "languages": ["English"],
+    "timezone": { "name": "Eastern Time", "offset": "UTC-5/UTC-4" },
+    "categories": ["city", "business", "family", "romantic"],
+    "tags": ["nightlife", "theater", "museums", "shopping", "dining", "skyline"],
+    "popularityScore": 94
+  },
+  {
+    "name": "Bali",
+    "country": "Indonesia",
+    "continent": "Asia",
+    "description": "Tropical paradise with stunning beaches, lush rice terraces, ancient temples, and vibrant culture.",
+    "overview": "Bali enchants visitors with its spiritual atmosphere, natural beauty, and warm hospitality. Whether seeking relaxation on pristine beaches or adventure in the jungle, Bali delivers.",
+    "highlights": [
+      "Uluwatu Temple - Cliff-top sea temple",
+      "Tegallalang Rice Terraces - Stunning landscapes",
+      "Sacred Monkey Forest - Nature sanctuary",
+      "Seminyak Beach - Sunset and surfing",
+      "Ubud - Cultural heart of Bali"
+    ],
+    "bestTimeToVisit": {
+      "description": "April to October is dry season with ideal weather",
+      "months": [
+        { "month": "April", "rating": 9, "weather": "Dry, pleasant", "crowdLevel": "moderate" },
+        { "month": "July", "rating": 8, "weather": "Dry, peak season", "crowdLevel": "peak" },
+        { "month": "October", "rating": 9, "weather": "Dry, end of season", "crowdLevel": "moderate" },
+        { "month": "January", "rating": 5, "weather": "Wet, rainy season", "crowdLevel": "low" }
+      ]
+    },
+    "localTransport": [
+      "Scooter - Most popular for locals and tourists",
+      "Private driver - Affordable and convenient",
+      "Taxi - Blue Bird is most reliable",
+      "Gojek/Grab - Ride-hailing apps",
+      "Bemo - Local minibuses"
+    ],
+    "popularAttractions": [
+      { "name": "Uluwatu Temple", "category": "landmark", "rating": 5 },
+      { "name": "Sacred Monkey Forest", "category": "nature", "rating": 4.5 },
+      { "name": "Tanah Lot", "category": "landmark", "rating": 4.5 },
+      { "name": "Mount Batur", "category": "nature", "rating": 5 }
+    ],
+    "estimatedCosts": {
+      "budget": { "accommodation": 15, "food": 10, "transport": 8, "activities": 15, "dailyTotal": 48 },
+      "mid": { "accommodation": 60, "food": 25, "transport": 15, "activities": 30, "dailyTotal": 130 },
+      "luxury": { "accommodation": 300, "food": 80, "transport": 50, "activities": 100, "dailyTotal": 530 },
+      "currency": "USD"
+    },
+    "culturalTips": [
+      "Dress modestly when visiting temples",
+      "Use right hand for giving and receiving",
+      "Learn a few Indonesian phrases",
+      "Respect local customs during religious ceremonies"
+    ],
+    "currency": { "code": "IDR", "name": "Indonesian Rupiah", "symbol": "Rp" },
+    "languages": ["Indonesian", "Balinese"],
+    "timezone": { "name": "Central Indonesia Time", "offset": "UTC+8" },
+    "categories": ["beach", "relaxation", "romantic", "adventure", "family"],
+    "tags": ["beach", "temples", "surfing", "yoga", "nature", "culture"],
+    "popularityScore": 88
+  },
+  {
+    "name": "Dubai",
+    "country": "United Arab Emirates",
+    "continent": "Asia",
+    "description": "Futuristic city of superlatives featuring stunning architecture, luxury shopping, and desert adventures.",
+    "overview": "Dubai dazzles with its ambition and extravagance. From the world's tallest building to man-made islands, it's a testament to human achievement and luxury living.",
+    "highlights": [
+      "Burj Khalifa - World's tallest building",
+      "Dubai Mall - Shopping and entertainment",
+      "Palm Jumeirah - Iconic man-made island",
+      "Desert Safari - Arabian adventure",
+      "Dubai Marina - Waterfront dining and views"
+    ],
+    "bestTimeToVisit": {
+      "description": "November to March offers pleasant weather for outdoor activities",
+      "months": [
+        { "month": "January", "rating": 9, "weather": "Pleasant, cool", "crowdLevel": "peak" },
+        { "month": "April", "rating": 6, "weather": "Warming up", "crowdLevel": "moderate" },
+        { "month": "July", "rating": 3, "weather": "Extremely hot", "crowdLevel": "low" },
+        { "month": "November", "rating": 9, "weather": "Pleasant, warm", "crowdLevel": "high" }
+      ]
+    },
+    "localTransport": [
+      "Metro - Clean, efficient, air-conditioned",
+      "Taxi - Widely available",
+      "Uber/Careem - Ride-hailing apps",
+      "Tram - Along the coast",
+      "Walking - Limited in summer heat"
+    ],
+    "popularAttractions": [
+      { "name": "Burj Khalifa", "category": "landmark", "rating": 5 },
+      { "name": "Dubai Fountain", "category": "entertainment", "rating": 5 },
+      { "name": "Dubai Frame", "category": "landmark", "rating": 4 },
+      { "name": "Global Village", "category": "entertainment", "rating": 4 }
+    ],
+    "estimatedCosts": {
+      "budget": { "accommodation": 50, "food": 25, "transport": 15, "activities": 30, "dailyTotal": 120 },
+      "mid": { "accommodation": 150, "food": 60, "transport": 30, "activities": 60, "dailyTotal": 300 },
+      "luxury": { "accommodation": 500, "food": 200, "transport": 100, "activities": 200, "dailyTotal": 1000 },
+      "currency": "AED"
+    },
+    "culturalTips": [
+      "Dress modestly in public places",
+      "No public displays of affection",
+      "Ramadan has special customs for eating/drinking",
+      "Friday is the holy day - some shops closed"
+    ],
+    "currency": { "code": "AED", "name": "UAE Dirham", "symbol": "د.إ" },
+    "languages": ["Arabic", "English"],
+    "timezone": { "name": "Gulf Standard Time", "offset": "UTC+4" },
+    "categories": ["city", "luxury", "family", "shopping"],
+    "tags": ["luxury", "shopping", "beach", "desert", "architecture", "family"],
+    "popularityScore": 90
+  },
+  {
+    "name": "London",
+    "country": "United Kingdom",
+    "continent": "Europe",
+    "description": "Historic capital blending royal heritage, world-class museums, diverse culture, and modern innovation.",
+    "overview": "London offers a perfect mix of history and modernity. From Buckingham Palace to the Shard, from West End theaters to trendy markets, there's something for everyone.",
+    "highlights": [
+      "Big Ben and Houses of Parliament - Gothic icons",
+      "British Museum - World treasures",
+      "Buckingham Palace - Royal residence",
+      "London Eye - River Thames views",
+      "Tower of London - Historic fortress"
+    ],
+    "bestTimeToVisit": {
+      "description": "May-September for warmest weather, December for festive atmosphere",
+      "months": [
+        { "month": "May", "rating": 8, "weather": "Mild, spring", "crowdLevel": "moderate" },
+        { "month": "July", "rating": 7, "weather": "Warm, possible rain", "crowdLevel": "peak" },
+        { "month": "September", "rating": 8, "weather": "Mild, pleasant", "crowdLevel": "moderate" },
+        { "month": "December", "rating": 7, "weather": "Cold, festive", "crowdLevel": "high" }
+      ]
+    },
+    "localTransport": [
+      "Tube/Underground - Extensive subway",
+      "Buses - Including iconic red buses",
+      "Black cabs - Licensed taxis",
+      "Thames Clippers - River buses",
+      "Walking - Many areas walkable"
+    ],
+    "popularAttractions": [
+      { "name": "British Museum", "category": "museum", "rating": 5 },
+      { "name": "Tower of London", "category": "landmark", "rating": 4.5 },
+      { "name": "Westminster Abbey", "category": "landmark", "rating": 4.5 },
+      { "name": "Camden Market", "category": "shopping", "rating": 4 }
+    ],
+    "estimatedCosts": {
+      "budget": { "accommodation": 50, "food": 25, "transport": 10, "activities": 20, "dailyTotal": 105 },
+      "mid": { "accommodation": 150, "food": 50, "transport": 15, "activities": 40, "dailyTotal": 255 },
+      "luxury": { "accommodation": 400, "food": 120, "transport": 50, "activities": 100, "dailyTotal": 670 },
+      "currency": "GBP"
+    },
+    "culturalTips": [
+      "Stand on the right on escalators",
+      "Mind the gap on the Tube",
+      "Afternoon tea is a lovely tradition",
+      "Pubs are social hubs - great for meeting locals"
+    ],
+    "currency": { "code": "GBP", "name": "British Pound", "symbol": "£" },
+    "languages": ["English"],
+    "timezone": { "name": "Greenwich Mean Time", "offset": "UTC+0/UTC+1" },
+    "categories": ["city", "historical", "family", "business"],
+    "tags": ["history", "museums", "theater", "parks", "shopping", "royalty"],
+    "popularityScore": 93
+  },
+  {
+    "name": "Santorini",
+    "country": "Greece",
+    "continent": "Europe",
+    "description": "Breathtaking Greek island famous for white-washed buildings, blue domes, dramatic sunsets, and volcanic beaches.",
+    "overview": "Santorini is the crown jewel of the Greek islands. Its dramatic caldera views, romantic sunsets, and charming villages create an unforgettable Mediterranean escape.",
+    "highlights": [
+      "Oia Sunset - World's most famous sunset",
+      "Fira - Cliff-top capital with views",
+      "Red Beach - Unique volcanic sands",
+      "Ancient Akrotiri - Minoan ruins",
+      "Wine tasting - Volcanic vineyards"
+    ],
+    "bestTimeToVisit": {
+      "description": "May-June and September-October for best weather and fewer crowds",
+      "months": [
+        { "month": "May", "rating": 9, "weather": "Warm, pleasant", "crowdLevel": "moderate" },
+        { "month": "July", "rating": 7, "weather": "Hot, crowded", "crowdLevel": "peak" },
+        { "month": "September", "rating": 9, "weather": "Warm, pleasant", "crowdLevel": "moderate" },
+        { "month": "December", "rating": 4, "weather": "Cool, quiet", "crowdLevel": "low" }
+      ]
+    },
+    "localTransport": [
+      "ATV/Quad bikes - Popular for exploring",
+      "Bus - Connects major towns",
+      "Taxi - Limited, book ahead",
+      "Rental car - Recommended for flexibility",
+      "Walking - Many paths between villages"
+    ],
+    "popularAttractions": [
+      { "name": "Oia Castle", "category": "landmark", "rating": 5 },
+      { "name": "Ancient Akrotiri", "category": "museum", "rating": 4.5 },
+      { "name": "Red Beach", "category": "nature", "rating": 4.5 },
+      { "name": "Santo Wines", "category": "food", "rating": 4.5 }
+    ],
+    "estimatedCosts": {
+      "budget": { "accommodation": 40, "food": 25, "transport": 15, "activities": 20, "dailyTotal": 100 },
+      "mid": { "accommodation": 150, "food": 50, "transport": 25, "activities": 40, "dailyTotal": 265 },
+      "luxury": { "accommodation": 500, "food": 120, "transport": 60, "activities": 100, "dailyTotal": 780 },
+      "currency": "EUR"
+    },
+    "culturalTips": [
+      "Book sunset dinner reservations well in advance",
+      "Stay in Oia or Imerovigli for caldera views",
+      "Respect the privacy of cave houses",
+      "Try local specialties: fava, tomato fritters, white eggplants"
+    ],
+    "currency": { "code": "EUR", "name": "Euro", "symbol": "€" },
+    "languages": ["Greek", "English"],
+    "timezone": { "name": "Eastern European Time", "offset": "UTC+2/UTC+3" },
+    "categories": ["beach", "romantic", "relaxation", "historical"],
+    "tags": ["romance", "sunset", "beach", "luxury", "wine", "views"],
+    "popularityScore": 89
+  },
+  {
+    "name": "Cape Town",
+    "country": "South Africa",
+    "continent": "Africa",
+    "description": "Stunning coastal city with dramatic mountains, pristine beaches, vibrant culture, and world-class wine regions.",
+    "overview": "Cape Town captivates with its natural beauty - Table Mountain dominates the skyline while penguins waddle on nearby beaches. A city of diverse cultures and outdoor adventures.",
+    "highlights": [
+      "Table Mountain - Iconic flat-topped mountain",
+      "Cape of Good Hope - Dramatic coastline",
+      "Boulders Beach - Penguin colony",
+      "V&A Waterfront - Shopping and dining",
+      "Robben Island - Historical site"
+    ],
+    "bestTimeToVisit": {
+      "description": "November to March for warm, dry summer weather",
+      "months": [
+        { "month": "January", "rating": 9, "weather": "Hot, dry summer", "crowdLevel": "peak" },
+        { "month": "April", "rating": 8, "weather": "Mild, autumn", "crowdLevel": "moderate" },
+        { "month": "July", "rating": 5, "weather": "Cool, rainy winter", "crowdLevel": "low" },
+        { "month": "November", "rating": 9, "weather": "Warm, spring", "crowdLevel": "moderate" }
+      ]
+    },
+    "localTransport": [
+      "MyCiti Bus - Reliable bus service",
+      "Uber - Safe and widely used",
+      "Rental car - Best for flexibility",
+      "Hop-on hop-off bus - Tourist route",
+      "Walking - City center is walkable"
+    ],
+    "popularAttractions": [
+      { "name": "Table Mountain", "category": "nature", "rating": 5 },
+      { "name": "Robben Island", "category": "museum", "rating": 4.5 },
+      { "name": "Kirstenbosch Gardens", "category": "nature", "rating": 5 },
+      { "name": "Bo-Kaap", "category": "landmark", "rating": 4.5 }
+    ],
+    "estimatedCosts": {
+      "budget": { "accommodation": 25, "food": 15, "transport": 10, "activities": 20, "dailyTotal": 70 },
+      "mid": { "accommodation": 80, "food": 35, "transport": 20, "activities": 40, "dailyTotal": 175 },
+      "luxury": { "accommodation": 250, "food": 80, "transport": 50, "activities": 100, "dailyTotal": 480 },
+      "currency": "USD"
+    },
+    "culturalTips": [
+      "Tipping 10-15% is standard at restaurants",
+      "Be safety conscious - don't walk alone at night",
+      "Visit townships with a reputable guide",
+      "Try local braai (barbecue) culture"
+    ],
+    "currency": { "code": "ZAR", "name": "South African Rand", "symbol": "R" },
+    "languages": ["English", "Afrikaans", "Xhosa"],
+    "timezone": { "name": "South Africa Standard Time", "offset": "UTC+2" },
+    "categories": ["nature", "adventure", "family", "food"],
+    "tags": ["mountains", "beach", "wine", "wildlife", "history", "adventure"],
+    "popularityScore": 85
+  }
+]
