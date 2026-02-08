@@ -16,9 +16,31 @@ const adminRoutes = require('./src/routes/adminRoutes');
 const insuranceRoutes = require('./src/routes/insuranceRoutes');
 const userRoutes = require('./src/routes/userRoutes');
 
-// Import services
+// Import services needed for controller injection
 const BookingService = require('./src/services/bookingService');
 const PaymentService = require('./src/services/paymentService');
+const PriceService = require('./src/services/priceService');
+const AlertService = require('./src/services/alertService');
+const DealEngine = require('./src/services/dealEngine');
+const NexvoyEngine = require('./src/services/nexvoyEngine');
+
+// Import real controller factories
+const { createFlightController } = require('./src/controllers/flightController');
+const { createHotelController } = require('./src/controllers/hotelController');
+const { createAlertController } = require('./src/controllers/alertController');
+const { createBookingLinkController } = require('./src/controllers/bookingLinkController');
+const { createDealController } = require('./src/controllers/dealController');
+
+// Import static controllers
+const ChatController = require('./src/controllers/chatController');
+const PaymentController = require('./src/controllers/paymentController');
+const BookingController = require('./src/controllers/bookingController');
+const authController = require('./src/controllers/authController');
+const affiliateController = require('./src/controllers/affiliateController');
+const corporateController = require('./src/controllers/corporateController');
+const gamificationController = require('./src/controllers/gamificationController');
+const loyaltyController = require('./src/controllers/loyaltyController');
+const aiController = require('./src/controllers/aiController');
 
 const app = express();
 
@@ -65,172 +87,58 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser());
 
-// Mock controllers for testing
-const mockControllers = {
-  flights: {
-    compareFlights: (req, res) => res.json({ success: true, flights: [] }),
-    getPriceHistory: (req, res) => res.json({ success: true, history: [] }),
-    checkDeal: (req, res) => res.json({ success: true, isDeal: true }),
-    predictPrices: (req, res) => res.json({ success: true, prediction: {} }),
-    getPopularRoutes: (req, res) => res.json({ success: true, routes: [] }),
-  },
-  hotels: {
-    compareHotels: (req, res) => res.json({ success: true, hotels: [] }),
-    getPriceHistory: (req, res) => res.json({ success: true, history: [] }),
-    checkDeal: (req, res) => res.json({ success: true, isDeal: true }),
-    getPopularDestinations: (req, res) => res.json({ success: true, destinations: [] }),
-    getAmenities: (req, res) => res.json({ success: true, amenities: [] }),
-  },
-  chat: {
-    sendMessage: (req, res) => res.json({ success: true, response: 'Hello!' }),
-    getHistory: (req, res) => res.json({ success: true, messages: [] }),
-    clearHistory: (req, res) => res.json({ success: true }),
-    getContext: (req, res) => res.json({ success: true, context: {} }),
-    updateContext: (req, res) => res.json({ success: true }),
-    getPreferences: (req, res) => res.json({ success: true, preferences: {} }),
-    updatePreferences: (req, res) => res.json({ success: true }),
-    exportConversation: (req, res) => res.json({ success: true, data: '' }),
-    handleWebSocket: () => {},
-  },
-  alerts: {
-    createAlert: (req, res) => res.json({ success: true, alert: { id: '1' } }),
-    getAlerts: (req, res) => res.json({ success: true, alerts: [] }),
-    getUserAlerts: (req, res) => res.json({ success: true, alerts: [] }),
-    getStatistics: (req, res) => res.json({ success: true, stats: {} }),
-    exportAlerts: (req, res) => res.json({ success: true, data: '' }),
-    importAlerts: (req, res) => res.json({ success: true }),
-    getPriceHistory: (req, res) => res.json({ success: true, history: [] }),
-    getPricePrediction: (req, res) => res.json({ success: true, prediction: {} }),
-    getAlert: (req, res) => res.json({ success: true, alert: {} }),
-    updateAlert: (req, res) => res.json({ success: true }),
-    deleteAlert: (req, res) => res.json({ success: true }),
-    pauseAlert: (req, res) => res.json({ success: true }),
-    resumeAlert: (req, res) => res.json({ success: true }),
-    checkAlert: (req, res) => res.json({ success: true }),
-  },
-  payments: {
-    createPaymentIntent: (req, res) => res.json({ success: true, clientSecret: 'secret' }),
-    confirmPayment: (req, res) => res.json({ success: true }),
-    getPaymentMethods: (req, res) => res.json({ success: true, methods: [] }),
-  },
-  itinerary: {
-    createItinerary: (req, res) => res.json({ success: true, itinerary: {} }),
-    getItinerary: (req, res) => res.json({ success: true, itinerary: {} }),
-    updateItinerary: (req, res) => res.json({ success: true }),
-    deleteItinerary: (req, res) => res.json({ success: true }),
-  },
-  receipts: {
-    generateReceipt: (req, res) => res.json({ success: true, receipt: {} }),
-    getReceipt: (req, res) => res.json({ success: true, receipt: {} }),
-    emailReceipt: (req, res) => res.json({ success: true }),
-  },
-  booking: {
-    createBooking: (req, res) => res.json({ success: true, booking: {} }),
-    getBookings: (req, res) => res.json({ success: true, bookings: [] }),
-    getBooking: (req, res) => res.json({ success: true, booking: {} }),
-    cancelBooking: (req, res) => res.json({ success: true }),
-    generateLinks: (req, res) => res.json({ success: true, links: {} }),
-    trackClick: (req, res) => res.json({ success: true }),
-    getBestOption: (req, res) => res.json({ success: true, option: {} }),
-    trackConversion: (req, res) => res.json({ success: true }),
-    getBookingOptions: (req, res) => res.json({ success: true, options: [] }),
-    getStats: (req, res) => res.json({ success: true, stats: {} }),
-    getAffiliates: (req, res) => res.json({ success: true, affiliates: [] }),
-    getStrategies: (req, res) => res.json({ success: true, strategies: [] }),
-  },
-  reviews: {
-    createReview: (req, res) => res.json({ success: true, review: {} }),
-    getReviews: (req, res) => res.json({ success: true, reviews: [] }),
-    getReviewById: (req, res) => res.json({ success: true, review: {} }),
-    updateReview: (req, res) => res.json({ success: true }),
-    deleteReview: (req, res) => res.json({ success: true }),
-  },
-  companions: {
-    findCompanions: (req, res) => res.json({ success: true, companions: [] }),
-    requestCompanion: (req, res) => res.json({ success: true }),
-  },
-  forums: {
-    getCategories: (req, res) => res.json({ success: true, categories: [] }),
-    getTopics: (req, res) => res.json({ success: true, topics: [] }),
-    createTopic: (req, res) => res.json({ success: true, topic: {} }),
-  },
-  suggestions: {
-    getSuggestions: (req, res) => res.json({ success: true, suggestions: [] }),
-  },
-  trips: {
-    createTrip: (req, res) => res.json({ success: true, trip: {} }),
-    getTrips: (req, res) => res.json({ success: true, trips: [] }),
-  },
-  personality: {
-    getMode: (req, res) => res.json({ success: true, mode: 'adventurer' }),
-    setMode: (req, res) => res.json({ success: true }),
-  },
-  multiModal: {
-    processInput: (req, res) => res.json({ success: true, result: {} }),
-  },
-  corporate: {
-    getDashboard: (req, res) => res.json({ success: true, dashboard: {} }),
-  },
-  affiliates: {
-    getStats: (req, res) => res.json({ success: true, stats: {} }),
-  },
-  loyalty: {
-    getPoints: (req, res) => res.json({ success: true, points: 0 }),
-    getAccount: (req, res) => res.json({ success: true, account: { tier: 'bronze', points: 0 } }),
-    getHistory: (req, res) => res.json({ success: true, history: [] }),
-    redeemPoints: (req, res) => res.json({ success: true, redeemed: 0 }),
-  },
-  gamification: {
-    getAchievements: (req, res) => res.json({ success: true, achievements: [] }),
-    getLeaderboard: (req, res) => res.json({ success: true, leaderboard: [] }),
-  },
-  itinerary: {
-    getAll: (req, res) => res.json({ success: true, itineraries: [] }),
-    getById: (req, res) => res.json({ success: true, itinerary: {} }),
-    create: (req, res) => res.json({ success: true, itinerary: { id: '1' } }),
-    update: (req, res) => res.json({ success: true }),
-    delete: (req, res) => res.json({ success: true }),
-    addActivity: (req, res) => res.json({ success: true, activity: {} }),
-    removeActivity: (req, res) => res.json({ success: true }),
-    optimize: (req, res) => res.json({ success: true, optimized: {} }),
-  },
-  payments: {
-    createIntent: (req, res) => res.json({ success: true, clientSecret: 'pi_test_secret' }),
-    confirm: (req, res) => res.json({ success: true, payment: {} }),
-    getMethods: (req, res) => res.json({ success: true, methods: [] }),
-    addMethod: (req, res) => res.json({ success: true, method: {} }),
-    removeMethod: (req, res) => res.json({ success: true }),
-    getHistory: (req, res) => res.json({ success: true, payments: [] }),
-    refund: (req, res) => res.json({ success: true, refund: {} }),
-  },
-  deals: {
-    getDeals: (req, res) => res.json({ success: true, deals: [] }),
-    analyzeDeals: (req, res) => res.json({ success: true, analysis: {} }),
-    findHiddenDeals: (req, res) => res.json({ success: true, deals: [] }),
-    scoreDeal: (req, res) => res.json({ success: true, score: 0 }),
-    compareDeals: (req, res) => res.json({ success: true, comparison: {} }),
-    predictPrices: (req, res) => res.json({ success: true, prediction: {} }),
-    getCurrentDeals: (req, res) => res.json({ success: true, deals: [] }),
-    getCategories: (req, res) => res.json({ success: true, categories: [] }),
-    getDealById: (req, res) => res.json({ success: true, deal: {} }),
-    getDealStats: (req, res) => res.json({ success: true, stats: {} }),
-    trackDealView: (req, res) => res.json({ success: true }),
-    shareDeal: (req, res) => res.json({ success: true }),
-  },
-};
-
-const mockServices = {
-  priceService: {
-    searchFlights: async () => ({ flights: [], meta: { count: 0 } }),
-    searchHotels: async () => ({ hotels: [], meta: { count: 0 } }),
-  }
-};
-
 // Initialize services
+const priceService = new PriceService();
+const alertService = new AlertService();
 const bookingService = new BookingService();
 const paymentService = new PaymentService();
+const dealEngine = new DealEngine();
+const nexvoyEngine = new NexvoyEngine();
 
-// Auth routes (no controllers needed)
+// Initialize real controllers with dependency injection
+const flightController = createFlightController(priceService);
+const hotelController = createHotelController(priceService);
+const chatController = new ChatController(nexvoyEngine);
+const alertController = createAlertController(alertService);
+const bookingLinkController = createBookingLinkController(bookingService);
+const dealController = createDealController(dealEngine, priceService);
+const paymentController = new PaymentController();
+const bookingController = new BookingController();
+
+// Assemble controllers object for routes
+const controllers = {
+  flights: flightController,
+  hotels: hotelController,
+  chat: chatController,
+  alerts: alertController,
+  payments: paymentController,
+  booking: bookingLinkController, // Note: booking routes use bookingLinkController
+  bookings: bookingController,    // Note: booking routes also use bookingController for some endpoints
+  deals: dealController,
+  loyalty: loyaltyController,
+  gamification: gamificationController,
+  affiliates: affiliateController,
+  corporate: corporateController,
+  ai: aiController,
+  // Social feature controllers that may be conditionally used
+  reviews: null,
+  companions: null,
+  forums: null,
+  suggestions: null,
+  trips: null,
+  personality: null,
+  multiModal: null
+};
+
+const services = {
+  priceService,
+  alertService,
+  bookingService,
+  paymentService,
+  dealEngine
+};
+
+// Auth routes
 app.use('/api/auth', authRoutes);
 
 // Real Stripe Payment routes
@@ -283,8 +191,8 @@ app.get('/api/booking/affiliates', async (req, res) => {
   }
 });
 
-// API routes with controllers
-app.use('/api', createRoutes(mockControllers, mockServices));
+// API routes with real controllers
+app.use('/api', createRoutes(controllers, services));
 
 // Itinerary routes
 app.use('/api/itinerary', createItineraryRoutes());
@@ -355,6 +263,7 @@ if (require.main === module) {
     console.log(`✅ Nexvoy API server running on port ${PORT}`);
     console.log(`🔒 JWT Security: ${process.env.JWT_SECRET ? 'Enabled' : 'DISABLED - SERVER WILL EXIT'}`);
     console.log(`🌐 Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`🎮 Real controllers: Enabled`);
   });
 }
 
