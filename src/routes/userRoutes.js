@@ -2,6 +2,20 @@ const express = require('express');
 const router = express.Router();
 
 /**
+ * Simple auth middleware to check for req.user
+ */
+const requireAuth = (req, res, next) => {
+  if (!req.user) {
+    return res.status(401).json({
+      success: false,
+      error: 'Authentication required',
+      code: 'UNAUTHORIZED'
+    });
+  }
+  next();
+};
+
+/**
  * User Routes
  * Protected routes for authenticated users
  */
@@ -10,7 +24,7 @@ const router = express.Router();
  * GET /api/user/profile
  * Get current user profile
  */
-router.get('/profile', (req, res) => {
+router.get('/profile', requireAuth, (req, res) => {
   res.json({
     success: true,
     data: {
@@ -25,7 +39,7 @@ router.get('/profile', (req, res) => {
  * PUT /api/user/profile
  * Update user profile
  */
-router.put('/profile', (req, res) => {
+router.put('/profile', requireAuth, (req, res) => {
   const updates = req.body;
   
   res.json({
@@ -42,7 +56,7 @@ router.put('/profile', (req, res) => {
  * GET /api/user/bookings
  * Get user's bookings
  */
-router.get('/bookings', (req, res) => {
+router.get('/bookings', requireAuth, (req, res) => {
   res.json({
     success: true,
     data: {

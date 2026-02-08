@@ -12,6 +12,14 @@ class ChatController {
     this.logger = getLogger();
     this.connections = new Map(); // WebSocket connections
     
+    // Bind HTTP route handlers to preserve 'this' context
+    this.sendMessage = this.sendMessage.bind(this);
+    this.getHistory = this.getHistory.bind(this);
+    this.clearHistory = this.clearHistory.bind(this);
+    this.getContext = this.getContext.bind(this);
+    this.updatePreferences = this.updatePreferences.bind(this);
+    this.updateContext = this.updateContext.bind(this);
+    
     // Setup chat service event handlers
     this.setupEventHandlers();
     

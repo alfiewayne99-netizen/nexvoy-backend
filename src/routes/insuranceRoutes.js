@@ -10,6 +10,10 @@ const { getLogger } = require('../utils/logger');
 const InsuranceService = require('../services/insuranceService');
 
 const logger = getLogger();
+
+// Helper to safely log with fallback
+const logInfo = (msg, ctx) => logger && logger.logInfo ? logger.logInfo(msg, ctx) : console.log(msg, ctx);
+const logError = (msg, ctx) => logger && logger.logError ? logger.logError(msg, ctx) : console.error(msg, ctx);
 const router = express.Router();
 
 // Initialize insurance service
@@ -54,7 +58,7 @@ router.post('/quote', asyncHandler(async (req, res) => {
     });
   }
 
-  logger.info('Insurance quote requested', {
+  logInfo('Insurance quote requested', {
     tripCost,
     destination,
     tripDuration,
@@ -78,7 +82,7 @@ router.post('/quote', asyncHandler(async (req, res) => {
       data: quote
     });
   } catch (error) {
-    logger.error('Insurance quote failed', { error: error.message, requestId: req.id });
+    logError('Insurance quote failed', { error: error.message, requestId: req.id });
     
     // Return fallback quote on error
     const fallbackQuote = insuranceService.generateFallbackQuote(tripCost, travelers);
@@ -123,7 +127,7 @@ router.post('/add-to-booking', asyncHandler(async (req, res) => {
     });
   }
 
-  logger.info('Adding insurance to booking', {
+  logInfo('Adding insurance to booking', {
     bookingId,
     planId,
     price,
@@ -163,7 +167,7 @@ router.post('/remove-from-booking', asyncHandler(async (req, res) => {
     });
   }
 
-  logger.info('Removing insurance from booking', { bookingId, requestId: req.id });
+  logInfo('Removing insurance from booking', { bookingId, requestId: req.id });
 
   const result = await insuranceService.removeFromBooking(bookingId, req.user?.id);
 
@@ -258,7 +262,7 @@ router.get('/policy/:policyId/document', asyncHandler(async (req, res) => {
     res.setHeader('Content-Disposition', `attachment; filename="policy-${policyId}.pdf"`);
     res.send(document);
   } catch (error) {
-    logger.error('Policy document retrieval failed', { policyId, error: error.message });
+    logError('Policy document retrieval failed', { policyId, error: error.message });
     res.status(404).json({
       success: false,
       error: 'Policy document not found',
@@ -383,7 +387,7 @@ router.post('/purchase', asyncHandler(async (req, res) => {
     });
   }
 
-  logger.info('Processing insurance purchase', {
+  logInfo('Processing insurance purchase', {
     bookingId,
     planId,
     userId: req.user?.id,
