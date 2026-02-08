@@ -290,6 +290,38 @@ class ChatController {
     }
   }
 
+  /**
+   * HTTP: Update conversation context
+   */
+  async updateContext(req, res, next) {
+    try {
+      const { userId, sessionId } = req.params;
+      const { context } = req.body;
+
+      if (!context || typeof context !== 'object') {
+        return res.status(400).json({
+          success: false,
+          error: 'Context object is required',
+          code: 'MISSING_CONTEXT'
+        });
+      }
+
+      await this.chatService.updateConversationContext(userId, sessionId, context);
+
+      res.json({
+        success: true,
+        data: {
+          message: 'Context updated',
+          userId,
+          sessionId,
+          context
+        }
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
   generateSessionId() {
     return `sess_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   }
