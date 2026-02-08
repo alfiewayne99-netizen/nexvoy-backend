@@ -233,6 +233,16 @@ app.get('/api/users/saved-searches', async (req, res) => {
   }
 });
 
+// Health check endpoint for Render
+app.get('/health', (req, res) => {
+  res.json({
+    success: true,
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    version: '1.0.0'
+  });
+});
+
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({
@@ -253,16 +263,6 @@ app.use((err, req, res, next) => {
       ? 'Internal server error' 
       : err.message,
     code: err.code || 'INTERNAL_ERROR'
-  });
-});
-
-// Health check endpoint for Render
-app.get('/health', (req, res) => {
-  res.json({
-    success: true,
-    status: 'healthy',
-    timestamp: new Date().toISOString(),
-    version: '1.0.0'
   });
 });
 

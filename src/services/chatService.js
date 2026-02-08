@@ -22,6 +22,9 @@ class NexAIChatService extends EventEmitter {
     this.conversations = new Map();
     this.contextStore = new Map();
     this.logger = getLogger();
+    // Helper to safely log with fallback
+    this.logInfo = (msg, ctx) => this.logger && this.logger.logInfo ? this.logger.logInfo(msg, ctx) : console.log(msg, ctx);
+    this.logError = (msg, ctx) => this.logger && this.logger.logError ? this.logger.logError(msg, ctx) : console.error(msg, ctx);
     
     // Initialize AI response patterns
     this.intents = this.initializeIntents();
@@ -184,7 +187,7 @@ class NexAIChatService extends EventEmitter {
       conversation.messages = conversation.messages.slice(-this.config.maxHistoryLength);
     }
 
-    this.logger.info(`Chat message received`, { userId, sessionId, messageLength: message.length });
+    this.logInfo(`Chat message received`, { userId, sessionId, messageLength: message.length });
 
     try {
       // Extract entities and update context
@@ -805,7 +808,7 @@ class NexAIChatService extends EventEmitter {
     for (const [key, conversation] of this.conversations.entries()) {
       if (now - conversation.lastActivity > maxAge) {
         this.conversations.delete(key);
-        this.logger.info('Cleaned up inactive conversation', { key });
+        this.logInfo('Cleaned up inactive conversation', { key });
       }
     }
   }
