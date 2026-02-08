@@ -256,6 +256,16 @@ app.use((err, req, res, next) => {
   });
 });
 
+// Health check endpoint for Render
+app.get('/health', (req, res) => {
+  res.json({
+    success: true,
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    version: '1.0.0'
+  });
+});
+
 const PORT = process.env.PORT || 3001;
 
 if (require.main === module) {
